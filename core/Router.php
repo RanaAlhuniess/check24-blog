@@ -1,20 +1,26 @@
 <?php
-
 namespace app\core;
 class Router
 {
     protected array $routes = [];
-    public function __construct()
+    private Request $request;
+    public function __construct(Request $request)
     {
-
+        $this->request = $request;
     }
     public function get($path, $callback)
     {
         $this->routes['get'][$path] = $callback;
     }
     public function run() {
-        //TODO: Hard coded for test
-        $callback = $this->routes['get']['/'] ?? false;
+        $path = $this->request->getPath();
+        $methode = $this->request->method();
+        $callback = $this->routes[$methode][$path] ?? false;
+        if (!$callback) {
+            http_response_code(404);
+            //TODO: redircte to error page
+            return '';
+        }
         return call_user_func($callback);
     }
 }
