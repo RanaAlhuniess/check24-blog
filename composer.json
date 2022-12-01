@@ -2,7 +2,6 @@
     "name": "ranaa/check24-blog",
     "autoload": {
         "psr-4": {
-            "Ranaa\\Check24Blog\\": "src/",
             "app\\": "./"
         }
     },
@@ -11,5 +10,7 @@
             "name": "Rana Alhuniess"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
 }

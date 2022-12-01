@@ -12,6 +12,10 @@ class Router
     {
         $this->routes['get'][$path] = $callback;
     }
+    public function post($path, $callback)
+    {
+        $this->routes['post'][$path] = $callback;
+    }
     public function run() {
         $path = $this->request->getPath();
         $methode = $this->request->method();
@@ -24,10 +28,16 @@ class Router
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
-        return call_user_func($callback);
+        if (is_array($callback)) {
+            //create an instance of controller
+            Application::$app->controller = new $callback[0]();
+            $callback[0] = Application::$app->controller;
+
+        }
+        return call_user_func($callback, $this->request);
     }
 
-    private function renderView(string $view)
+    public function renderView(string $view)
     {
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderViewOnly($view);

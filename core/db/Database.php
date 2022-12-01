@@ -1,6 +1,6 @@
 <?php
 
-namespace app\core;
+namespace app\core\db;
 
 use PDOException;
 
@@ -21,5 +21,9 @@ class Database
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
+    }
+    public function prepare($sql): \PDOStatement
+    {
+        return $this->pdo->prepare($sql);
     }
 }
