@@ -2,7 +2,8 @@
     "name": "ranaa/check24-blog",
     "autoload": {
         "psr-4": {
-            "Ranaa\\Check24Blog\\": "src/"
+            "Ranaa\\Check24Blog\\": "src/",
+            "app\\": "./"
         }
     },
     "authors": [
