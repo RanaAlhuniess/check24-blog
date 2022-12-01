@@ -1,0 +1,14 @@
+{
+    "name": "ranaa/check24-blog",
+    "autoload": {
+        "psr-4": {
+            "Ranaa\\Check24Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rana Alhuniess"
+        }
+    ],
+    "require": {}
+}
