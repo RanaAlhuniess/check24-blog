@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 use app\core\Application;
 use app\controllers\AuthController;
+use app\controllers\BlogController;
 $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
@@ -14,7 +15,7 @@ $config = [
 ];
 $app = new Application(dirname(__DIR__), $config);
 
-$app->router->get('/', 'overview');
+$app->router->get('/', [BlogController::class,'overview']);
 $app->router->get('/login', [AuthController::class,'login']);
 $app->router->post('/login', [AuthController::class,'login']);
 $app->run();

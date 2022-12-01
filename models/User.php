@@ -1,5 +1,7 @@
 <?php
+
 namespace app\models;
+
 use app\core\Application;
 use app\core\db\DbModel;
 
@@ -10,15 +12,16 @@ class User extends DbModel
     public string $email = '';
     public string $password = '';
 
-    public function register()
+    public function attributes(): array
     {
-        return '';
+        return ['firstname', 'lastname', 'email', 'password'];
     }
 
     public static function tableName(): string
     {
         return 'users';
     }
+
     public function login(): bool
     {
         $user = User::findOne(['email' => $this->email]);
@@ -33,12 +36,19 @@ class User extends DbModel
 
         return Application::$app->login($user);
     }
-    public function logout() {
+
+    public function logout()
+    {
 
     }
 
     public function primaryKey(): string
     {
         return 'id';
+    }
+
+    public static function sort(): array
+    {
+        return [];
     }
 }
