@@ -1,5 +1,5 @@
 <?php
-
+namespace app\models;
 use app\core\Application;
 use app\core\db\DbModel;
 
@@ -9,7 +9,7 @@ class User extends DbModel
     public string $lastname = '';
     public string $email = '';
     public string $password = '';
-    public string $confirmPassword = '';
+
     public function register()
     {
         return '';
@@ -37,4 +37,8 @@ class User extends DbModel
 
     }
 
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
 }

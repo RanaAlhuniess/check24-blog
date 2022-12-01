@@ -1,7 +1,9 @@
 <?php
 namespace app\controllers;
+use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
+use app\models\User;
 
 class AuthController extends Controller
 {
@@ -11,10 +13,11 @@ class AuthController extends Controller
             //TODO: recive it from the form
             $user = new User();
             $user->email = 'rana@test.com';
-            $user->password = '123';;
+            $user->password = 123;
             if ($user->login()) {
-                var_dump("fffffffffffffff");
-                return ;
+                //TODO:
+                Application::$app->response->redirect('/');
+                return;
             }
         }
 
