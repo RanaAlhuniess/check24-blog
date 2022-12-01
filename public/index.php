@@ -2,9 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 use app\core\Application;
 
-$app = new Application();
+$app = new Application(dirname(__DIR__));
 
-$app->router->get('/', function (){
-    echo "Hello word";
-});
+$app->router->get('/', 'overview');
 $app->run();
